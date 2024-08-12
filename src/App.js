@@ -50,9 +50,8 @@ function App() {
     e.stopPropagation();
     try {
       await fetch(`https://reactflashcard.onrender.com/api/data/${id}`, { method: 'DELETE' });
-      setFlashcards((prevFlashcards) =>
-        prevFlashcards.filter((card) => card.id !== id)
-      );
+      // Reload the page to reflect the deletion
+      window.location.reload();
     } catch (error) {
       console.error('Error deleting card:', error);
     }
@@ -67,14 +66,10 @@ function App() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formState),
         });
-        const updatedCard = await response.json();
-        setFlashcards((prevFlashcards) =>
-          prevFlashcards.map((card) =>
-            card.id === updatedCard.id ? updatedCard : card
-          )
-        );
-        setIsEditing(false);
-        setEditCardId(null);
+        if (!response.ok) throw new Error('Network response was not ok');
+
+        // Reload the page to reflect the changes
+        window.location.reload();
       } catch (error) {
         console.error('Error editing card:', error);
       }
@@ -85,16 +80,18 @@ function App() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formState),
         });
-        const newCard = await response.json();
-        setFlashcards((prevFlashcards) => [...prevFlashcards, newCard]);
+        if (!response.ok) throw new Error('Network response was not ok');
+
+        // Reload the page to reflect the new card
+        window.location.reload();
       } catch (error) {
         console.error('Error adding card:', error);
       }
     }
+    // Reset form state
     setFormState({ question: '', answer: '' });
-
-    // Force a page reload to reflect changes
-    window.location.reload();
+    setIsEditing(false);
+    setEditCardId(null);
   };
 
   const handleCancel = () => {
@@ -115,6 +112,7 @@ function App() {
           handleEditClick={handleEditClick}
           handleDeleteClick={handleDeleteClick}
           responsive={responsive}
+          isEditing={isEditing} // Pass isEditing to FlashcardCarousel
         />
       </div>
       <div className="buttons">
