@@ -10,12 +10,13 @@ const FlashcardCarousel = ({
   handleEditClick,
   handleDeleteClick,
   responsive,
+  isEditing // Add isEditing to the props
 }) => {
   const carouselRef = useRef(null);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
-      if (!carouselRef.current) return;
+      if (!carouselRef.current || isEditing) return; // Check isEditing
 
       if (event.key === 'ArrowRight') {
         carouselRef.current.next(); // Move to the next slide
@@ -30,7 +31,7 @@ const FlashcardCarousel = ({
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [isEditing]); // Re-run effect when isEditing changes
 
   return (
     <Carousel
