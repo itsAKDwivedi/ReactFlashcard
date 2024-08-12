@@ -21,7 +21,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/data');
+        const response = await fetch('https://reactflashcard.onrender.com/api/data');
         if (!response.ok) throw new Error('Network response was not ok');
         const data = await response.json();
         setFlashcards(data);
@@ -49,7 +49,7 @@ function App() {
   const handleDeleteClick = async (e, id) => {
     e.stopPropagation();
     try {
-      await fetch(`http://localhost:5000/api/data/${id}`, { method: 'DELETE' });
+      await fetch(`https://reactflashcard.onrender.com/api/data/${id}`, { method: 'DELETE' });
       setFlashcards((prevFlashcards) =>
         prevFlashcards.filter((card) => card.id !== id)
       );
@@ -62,7 +62,7 @@ function App() {
     e.preventDefault();
     if (isEditing) {
       try {
-        const response = await fetch(`http://localhost:5000/api/data/${editCardId}`, {
+        const response = await fetch(`https://reactflashcard.onrender.com/api/data/${editCardId}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formState),
@@ -80,7 +80,7 @@ function App() {
       }
     } else {
       try {
-        const response = await fetch('http://localhost:5000/api/data', {
+        const response = await fetch('https://reactflashcard.onrender.com/api/data', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formState),
