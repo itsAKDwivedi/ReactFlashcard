@@ -1,0 +1,142 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin-bottom: 40px;
+  padding: 0;
+}
+
+.app-container {
+  text-align: center;
+}
+
+/* Carousel Styles */
+.carousel-container {
+  margin: 20px;
+}
+
+/* Container for Flashcards */
+.carousel-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Card Styles */
+.card {
+  background-color: bisque;
+  width: 50vw;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: 25px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.card-back {
+  background-color: #ffebcd;
+}
+
+/* Card Heading Styling */
+.card h1 {
+  font-size: 24px;
+  color: #333;
+  margin: 0;
+  padding: 10px;
+}
+
+/* Button Styles */
+.action-buttons {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 0 20px;
+}
+
+.action-buttons button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.action-buttons button:hover {
+  background-color: #0056b3;
+}
+
+.action-buttons button:focus {
+  outline: none;
+}
+
+/* Form Styles */
+form {
+  margin-top: 20px;
+}
+
+form h2 {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+form input {
+  display: block;
+  margin: auto;
+  margin-bottom: 15px;
+  padding: 10px;
+  max-width: 500px;
+  width: calc(100% - 20px);
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+form button[type="submit"],
+form button[type="button"] {
+  margin-top: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+form button[type="submit"]:hover,
+form button[type="button"]:hover {
+  background-color: #218838;
+}
+
+form button[type="submit"]:focus,
+form button[type="button"]:focus {
+  outline: none;
+}
+
+form button[type="button"] {
+  background-color: #dc3545;
+  margin-left: 10px;
+}
+
+form button[type="button"]:hover {
+  background-color: #c82333;
+}
