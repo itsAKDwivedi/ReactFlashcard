@@ -99,7 +99,7 @@ function App() {
     setIsEditing(false);
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div>Server Loading, it might take more than 50 seconds to load due to inactivity on free service deployment...</div>;
   if (error) return <div>Error: {error}</div>;
 
   return (
